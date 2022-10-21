@@ -1,5 +1,4 @@
-module git.ouryahoo.com/pfrieden/dangling_records
-
+module github.com/yahoo/SubdomainSleuth
 go 1.16
 
 require (
