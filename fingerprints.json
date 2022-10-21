@@ -1,0 +1,609 @@
+[
+	{
+		"service": "Fastly",
+		"cname": [
+			"fastly"
+		],
+		"fingerprint": [
+			"Fastly error: unknown domain"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "GitHub",
+		"cname": [
+			"github.io"
+		],
+		"address": [
+			"185.199.108.153",
+			"185.199.109.153",
+			"185.199.110.153",
+			"185.199.111.153",
+			"2606:50c0:8000::153",
+			"2606:50c0:8001::153",
+			"2606:50c0:8002::153",
+			"2606:50c0:8003::153"
+		],
+		"fingerprint": [
+			"There isn't a GitHub Pages site here."
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "heroku",
+		"cname": [
+			"herokuapp",
+			"proxy.heroku.com"
+		],
+		"fingerprint": [
+			"herokucdn.com/error-pages/no-such-app.html"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "pantheon",
+		"cname": [
+			"pantheonsite.io"
+		],
+		"fingerprint": [
+			"The gods are wise, but do not know of the site which you seek."
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "Tumblr",
+		"cname": [
+			"domains.tumblr.com"
+		],
+		"address": [
+			"74.114.154.22/32",
+			"74.114.154.18/32",
+			"66.6.44.4/32"
+		],
+		"fingerprint": [
+			"Whatever you were looking for doesn't currently exist at this address."
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "wordpress",
+		"cname": [
+			"wordpress.com"
+		],
+		"fingerprint": [
+			"Do you want to register"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "teamwork",
+		"cname": [
+			"teamwork.com"
+		],
+		"fingerprint": [
+			"Oops - We didn't find your site."
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "helpjuice",
+		"cname": [
+			"helpjuice.com"
+		],
+		"fingerprint": [
+			"We could not find what you're looking for."
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "helpscout",
+		"cname": [
+			"helpscoutdocs.com"
+		],
+		"fingerprint": [
+			"No settings were found for this company:"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "AWS S3 bucket",
+		"cname": [
+			"s3.amazonaws",
+			"s3-website"
+		],
+		"fingerprint": [
+			"IncorrectEndpoint",
+			"The specified bucket"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "ghost",
+		"cname": [
+			"ghost.io"
+		],
+		"fingerprint": [
+			"The thing you were looking for is no longer here, or never was"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "feedpress",
+		"cname": [
+			"redirect.feedpress.me"
+		],
+		"fingerprint": [
+			"The feed has not been found."
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "shopify",
+		"cname": [
+			"myshopify.com"
+		],
+		"fingerprint": [
+			"Sorry, this shop is currently unavailable."
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "statuspage",
+		"cname": [
+			"statuspage.io"
+		],
+		"fingerprint": [
+			"You are being <a href=\"https://www.statuspage.io\">redirected"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "uservoice",
+		"cname": [
+			"uservoice.com"
+		],
+		"fingerprint": [
+			"This UserVoice subdomain is currently available!"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "surge",
+		"cname": [
+			"surge.sh"
+		],
+		"fingerprint": [
+			"project not found"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "bitbucket",
+		"cname": [
+			"bitbucket.io"
+		],
+		"fingerprint": [
+			"Repository not found"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "intercom",
+		"cname": [
+			"custom.intercom.help"
+		],
+		"fingerprint": [
+			"This page is reserved for artistic dogs.",
+			"<h1 class=\"headline\"Uh oh. That page doesn't exist.</h1>"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "webflow",
+		"cname": [
+			"proxy.webflow.com",
+			"proxy-ssl.webflow.com"
+		],
+		"fingerprint": [
+			"<p class=\"description\">The page you are looking for doesn't exist or has been moved.</p>"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "wishpond",
+		"cname": [
+			"wishpond.com"
+		],
+		"fingerprint": [
+			"https://www.wishpond.com/404?campaign=true"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "aftership",
+		"cname": [
+			"aftership.com"
+		],
+		"fingerprint": [
+			"Oops.</h2><p class=\"text-muted text-tight\">The page you're looking for doesn't exist."
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "aha",
+		"cname": [
+			"ideas.aha.io"
+		],
+		"fingerprint": [
+			"There is no portal here ... sending you back to Aha!"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "tictail",
+		"cname": [
+			"domains.tictail.com"
+		],
+		"fingerprint": [
+			"to target URL: <a href=\"https://tictail.com",
+			"Start selling on Tictail."
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "brightcove",
+		"cname": [
+			"bcvp0rtal.com",
+			"brightcovegallery.com",
+			"gallery.video"
+		],
+		"fingerprint": [
+			"<p class=\"bc-gallery-error-code\">Error Code: 404</p>"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "bigcartel",
+		"cname": [
+			"bigcartel.com"
+		],
+		"fingerprint": [
+			"<h1>Oops! We could&#8217;t find that page.</h1>"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "campaignmonitor",
+		"cname": [
+			"createsend.com"
+		],
+		"fingerprint": [
+			"Double check the URL or <a href=\"mailto:help@createsend.com"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "acquia",
+		"cname": [
+			"acquia-test.co"
+		],
+		"fingerprint": [
+			"The site you are looking for could not be found."
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "simplebooklet",
+		"cname": [
+			"simplebooklet.com"
+		],
+		"fingerprint": [
+			"We can't find this <a href=\"https://simplebooklet.com"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "getresponse",
+		"cname": [
+			".gr8.com"
+		],
+		"fingerprint": [
+			"With GetResponse Landing Pages, lead generation has never been easier"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "vend",
+		"cname": [
+			"vendecommerce.com"
+		],
+		"fingerprint": [
+			"Looks like you've traveled too far into cyberspace"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "jetbrains",
+		"cname": [
+			"myjetbrains.com"
+		],
+		"fingerprint": [
+			"is not a registered InCloud YouTrack."
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "Microsoft Azure",
+		"cname": [
+			".azurewebsites.net",
+			".cloudapp.net",
+			".cloudapp.azure.com",
+			".trafficmanager.net",
+			".blob.core.windows.net",
+			".azure-api.net",
+			".azurehdinsight.net",
+			".azureedge.net"
+		],
+		"fingerprint": [
+			"404 Web Site not found",
+			"Custom domain has not been configured inside Azure",
+			"Our services aren't available right now"
+		],
+		"nxdomain": true
+	},
+	{
+		"service": "zendesk",
+		"cname": [
+			"zendesk.com"
+		],
+		"fingerprint": [
+			"Help Center Closed"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "readme",
+		"cname": [
+			"readme.io"
+		],
+		"fingerprint": [
+			"Project doesnt exist... yet!"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "apigee",
+		"cname": [
+			"-portal.apigee.net"
+		],
+		"fingerprint": [],
+		"nxdomain": true
+	},
+	{
+		"service": "smugmug",
+		"cname": [
+			"domains.smugmug.com"
+		],
+		"fingerprint": [],
+		"nxdomain": true
+	},
+	{
+		"service": "AWS CloudFront",
+		"cname": [
+			"cloudfront.net"
+		],
+		"fingerprint": [
+			"The request could not be satisfied",
+			"<Code>AccessDenied</Code>"
+		],
+		"address": [
+			"120.52.22.96/27",
+			"205.251.249.0/24",
+			"180.163.57.128/26",
+			"204.246.168.0/22",
+			"205.251.252.0/23",
+			"54.192.0.0/16",
+			"204.246.173.0/24",
+			"54.230.200.0/21",
+			"120.253.240.192/26",
+			"116.129.226.128/26",
+			"130.176.0.0/17",
+			"108.156.0.0/14",
+			"99.86.0.0/16",
+			"205.251.200.0/21",
+			"223.71.71.128/25",
+			"13.32.0.0/15",
+			"120.253.245.128/26",
+			"13.224.0.0/14",
+			"70.132.0.0/18",
+			"15.158.0.0/16",
+			"13.249.0.0/16",
+			"205.251.208.0/20",
+			"65.9.128.0/18",
+			"130.176.128.0/18",
+			"58.254.138.0/25",
+			"54.230.208.0/20",
+			"116.129.226.0/25",
+			"52.222.128.0/17",
+			"64.252.128.0/18",
+			"205.251.254.0/24",
+			"54.230.224.0/19",
+			"71.152.0.0/17",
+			"216.137.32.0/19",
+			"204.246.172.0/24",
+			"120.52.39.128/27",
+			"118.193.97.64/26",
+			"223.71.71.96/27",
+			"54.240.128.0/18",
+			"205.251.250.0/23",
+			"180.163.57.0/25",
+			"52.46.0.0/18",
+			"223.71.11.0/27",
+			"52.82.128.0/19",
+			"54.230.0.0/17",
+			"54.230.128.0/18",
+			"54.239.128.0/18",
+			"130.176.224.0/20",
+			"36.103.232.128/26",
+			"52.84.0.0/15",
+			"143.204.0.0/16",
+			"144.220.0.0/16",
+			"120.52.153.192/26",
+			"119.147.182.0/25",
+			"120.232.236.0/25",
+			"54.182.0.0/16",
+			"58.254.138.128/26",
+			"120.253.245.192/27",
+			"54.239.192.0/19",
+			"18.64.0.0/14",
+			"120.52.12.64/26",
+			"99.84.0.0/16",
+			"130.176.192.0/19",
+			"52.124.128.0/17",
+			"204.246.164.0/22",
+			"13.35.0.0/16",
+			"204.246.174.0/23",
+			"36.103.232.0/25",
+			"119.147.182.128/26",
+			"118.193.97.128/25",
+			"120.232.236.128/26",
+			"204.246.176.0/20",
+			"65.8.0.0/16",
+			"65.9.0.0/17",
+			"108.138.0.0/15",
+			"120.253.241.160/27",
+			"64.252.64.0/18",
+			"13.113.196.64/26",
+			"13.113.203.0/24",
+			"52.199.127.192/26",
+			"13.124.199.0/24",
+			"3.35.130.128/25",
+			"52.78.247.128/26",
+			"13.233.177.192/26",
+			"15.207.13.128/25",
+			"15.207.213.128/25",
+			"52.66.194.128/26",
+			"13.228.69.0/24",
+			"52.220.191.0/26",
+			"13.210.67.128/26",
+			"13.54.63.128/26",
+			"99.79.169.0/24",
+			"18.192.142.0/23",
+			"35.158.136.0/24",
+			"52.57.254.0/24",
+			"13.48.32.0/24",
+			"18.200.212.0/23",
+			"52.212.248.0/26",
+			"3.10.17.128/25",
+			"3.11.53.0/24",
+			"52.56.127.0/25",
+			"15.188.184.0/24",
+			"52.47.139.0/24",
+			"18.229.220.192/26",
+			"54.233.255.128/26",
+			"3.231.2.0/25",
+			"3.234.232.224/27",
+			"3.236.169.192/26",
+			"3.236.48.0/23",
+			"34.195.252.0/24",
+			"34.226.14.0/24",
+			"13.59.250.0/26",
+			"18.216.170.128/25",
+			"3.128.93.0/24",
+			"3.134.215.0/24",
+			"52.15.127.128/26",
+			"3.101.158.0/23",
+			"52.52.191.128/26",
+			"34.216.51.0/25",
+			"34.223.12.224/27",
+			"34.223.80.192/26",
+			"35.162.63.192/26",
+			"35.167.191.128/26",
+			"44.227.178.0/24",
+			"44.234.108.128/25",
+			"44.234.90.252/30"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "vercel",
+		"cname": [
+			"cname.vercel-dns.com"
+		],
+		"fingerprint": [
+			"The deployment could not be found on Vercel",
+			"DEPLOYMENT_NOT_FOUND"
+		],
+		"address": [
+			"76.76.21.21/32"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "wpengine",
+		"cname": [
+			"wpengine.com"
+		],
+		"fingerprint": [
+			"The site you were looking for couldn't be found.",
+			"Site is not available"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "lookbook",
+		"cname": [
+			"lookbookhq.com"
+		],
+		"fingerprint": [
+			"Resource not found",
+			"HTTP 404"
+		],
+		"nxdomain": false
+	},
+	{
+		"service": "CloudFlare",
+		"address": [
+			"103.21.244.0/22",
+			"103.22.200.0/22",
+			"103.31.4.0/22",
+			"104.16.0.0/13",
+			"104.24.0.0/14",
+			"108.162.192.0/18",
+			"131.0.72.0/22",
+			"141.101.64.0/18",
+			"162.158.0.0/15",
+			"172.64.0.0/13",
+			"173.245.48.0/20",
+			"188.114.96.0/20",
+			"190.93.240.0/20",
+			"197.234.240.0/22",
+			"198.41.128.0/17",
+			"2400:cb00::/32",
+			"2606:4700::/32",
+			"2803:f800::/32",
+			"2405:b500::/32",
+			"2405:8100::/32",
+			"2a06:98c0::/29",
+			"2c0f:f248::/32"
+		],
+		"fingerprint": [
+			"DNS resolution error",
+			"Cloudflare Ray ID",
+			"error code: 1001",
+			"Origin DNS error",
+			"error code:  1016",
+			"Cloudflare"
+		]
+	},
+	{
+		"service": "Google hosted",
+		"cname": [
+			"googlehosted.com"
+		],
+		"fingerprint": [
+			"Error 404",
+			"The requested URL was not found on this server."
+		]
+	}
+]
