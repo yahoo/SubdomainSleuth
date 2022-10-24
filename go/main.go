@@ -64,7 +64,7 @@ func main() {
 	flag.Var(&checks, "check", "Check to execute, may specify more than once.")
 	flag.BoolVar(&read_stdin, "stdin", false, "Indicates to read zone files from stdin")
 	flag.StringVar(&output_filename, "output", "-", "Output file name, or '-' for stdout")
-	logLevel = zap.LevelFlag("logging", zap.DebugLevel, "Log level (error, warn, info, debug)")
+	logLevel = zap.LevelFlag("logging", zap.WarnLevel, "Log level (error, warn, info, debug)")
 
 	flag.Parse()
 

@@ -8,7 +8,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net"
 	"net/http"
 	"strings"
@@ -16,14 +16,19 @@ import (
 
 	"github.com/miekg/dns"
 	"github.com/yl2chen/cidranger"
+
+	_ "embed"
 )
+
+//go:embed fingerprints.json
+var DEFAULT_FINGERPRINTS []byte
 
 func init() {
 	RegisterChecker("http-fingerprint", &HttpChecker{})
 }
 
 func (self *HttpChecker) Init() (err error) {
-	self.LoadFingerprints("fingerprints.json")
+	self.LoadFingerprints()
 	return
 }
 
@@ -37,6 +42,9 @@ type HttpFingerprint struct {
 	UrlTemplate string           `json:"template"`
 }
 
+// We loaded the raw list of addresses from the fingerprint definition file,
+// but we need to convert that into a cidranger.Ranger for faster lookups.  We
+// also set a default URL template if one wasn't provided.
 func (self *HttpFingerprint) Load() (err error) {
 	self.Ranger = cidranger.NewPCTrieRanger()
 
@@ -183,14 +191,12 @@ func (self *HttpChecker) Check(record dns.RR) (err error) {
 	return
 }
 
-func (self *HttpChecker) LoadFingerprints(fn string) (err error) {
-	js, err := ioutil.ReadFile(fn)
-	if err != nil {
-		logger.Fatalf("Unable to load HTTP fingerprints from %s: %s", fn, err)
-		return
-	}
-
-	err = json.Unmarshal(js, &self.fingerprints)
+// Load the fingerprint definitions.  We're using go:embed to embed the
+// fingerprint data into the executable.  This avoids having to having to
+// distribute the fingerprints.json file with the executable or configuring
+// where to find it.
+func (self *HttpChecker) LoadFingerprints() (err error) {
+	err = json.Unmarshal(DEFAULT_FINGERPRINTS, &self.fingerprints)
 
 	// Use array access so that we update the original rather than a copy.
 	for i := range self.fingerprints {
@@ -210,7 +216,7 @@ func GetHttp(url string) (content []byte, err error) {
 
 	defer resp.Body.Close()
 
-	content, err = ioutil.ReadAll(resp.Body)
+	content, err = io.ReadAll(resp.Body)
 	if err != nil {
 		logger.Infof("HTTP GET body error on %s: %s", url, err)
 		return
