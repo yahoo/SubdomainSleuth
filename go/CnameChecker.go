@@ -43,7 +43,7 @@ type CnameChecker struct {
 
 // Nothing to initialize, but this is required to meet the interface.
 func (self *CnameChecker) Init() (err error) {
-	logger.Warnf("Initializing check plugin", "check", "cname2")
+	logger.Infow("Initializing check plugin", "check", "cname")
 	return
 }
 

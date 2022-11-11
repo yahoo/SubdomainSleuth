@@ -36,7 +36,7 @@ type NsChecker struct {
 
 // Nothing to initialize, but this is required to meet the interface.
 func (self *NsChecker) Init() (err error) {
-	logger.Warnf("Initializing check plugin", "check", "ns2")
+	logger.Infow("Initializing check plugin", "check", "ns")
 	return
 }
 

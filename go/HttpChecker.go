@@ -28,6 +28,7 @@ func init() {
 }
 
 func (self *HttpChecker) Init() (err error) {
+	logger.Infow("Initializing check plugin", "check", "http-fingerprint")
 	self.LoadFingerprints()
 	return
 }
