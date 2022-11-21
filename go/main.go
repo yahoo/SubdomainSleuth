@@ -144,9 +144,11 @@ func main() {
 
 	// Write our output as JSON to the output_file.  This may be a normal file
 	// or it could be stdout.
-	out, _ := json.MarshalIndent(results, "", "  ")
-	output_file.Write(out)
-	output_file.Sync()
+	if len(results) > 0 {
+		out, _ := json.MarshalIndent(results, "", "  ")
+		output_file.Write(out)
+		output_file.Sync()
+	}
 }
 
 // Parse a zone file and run all the records found through the check plugins.
