@@ -34,7 +34,7 @@ A subdomain takeover is when an attacker is able to take control of the target o
 * Change to the "go" directory
 * Run `go build`
     * This will download the necessary libraries and build against them.
-* Copy the `dangling_records` executable to a convenient location
+* Copy the `SubdomainSleuth` executable to a convenient location
 
 ## Usage
 This tool sometimes needs to make DNS queries directly to remote servers.  As such, you need to run it on a host that has direct Internet access to external DNS servers.  If your firewall filters outbound DNS queries, you may see failures.  Likewise, to check IPv6 resources you'll need to have IPv6 connectivity.
@@ -50,12 +50,12 @@ When the run is finished, it will output JSON data with information about each b
 To use localhost as a resolver and execute the `cname` and `ns` checks on the zone file `example.com`, your command would look like this:
 
 ```
-dangling_records --resolver=127.0.0.1 --check=cname --check=ns /etc/named/zones/example.com
+SubdomainSleuth --resolver=127.0.0.1 --check=cname --check=ns /etc/named/zones/example.com
 ```
 
 To use a list of zone files on standard input, the same checks would look like this:
 ```
-find /etc/named/zones -type f | dangling_records --resolver=127.0.0.1 --check=cname --check=ns --stdin
+find /etc/named/zones -type f | SubdomainSleuth --resolver=127.0.0.1 --check=cname --check=ns --stdin
 ```
 
 ## Security
