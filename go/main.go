@@ -51,6 +51,7 @@ var resolvers resolverFlag // This is typed, but it's still also a []string and 
 var checks checkFlag
 var resolver_idx int
 var read_stdin bool
+var skip_conn_check bool
 var logLevel *zapcore.Level
 var output_filename string
 
@@ -64,6 +65,7 @@ func main() {
 	flag.Var(&checks, "check", "Check to execute, may specify more than once.")
 	flag.BoolVar(&read_stdin, "stdin", false, "Indicates to read zone files from stdin")
 	flag.StringVar(&output_filename, "output", "-", "Output file name, or '-' for stdout")
+	flag.BoolVar(&skip_conn_check, "skipconncheck", false, "Skip connectivity checks")
 	logLevel = zap.LevelFlag("logging", zap.WarnLevel, "Log level (error, warn, info, debug)")
 
 	flag.Parse()
@@ -104,9 +106,15 @@ func main() {
 		defer output_file.Close()
 	}
 
-	// Check our connectivity.  Certain checks require direct IPv4 and IPv6
-	// connectivity to remote authoritative servers.
-	connectivity = CheckConnectivity()
+	if skip_conn_check {
+		connectivity.Ipv4 = true
+		connectivity.Ipv6 = true
+		connectivity.Resolvers = true
+	} else {
+		// Check our connectivity.  Certain checks require direct IPv4 and IPv6
+		// connectivity to remote authoritative servers.
+		connectivity = CheckConnectivity()
+	}
 
 	// Initialize the checks we're using
 	for _, check := range checks {
