@@ -23,7 +23,7 @@ import (
 
 var client dns.Client
 
-var results Results
+var results Results = make([]Result, 0)
 
 type resolverFlag []string
 
