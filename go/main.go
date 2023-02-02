@@ -159,6 +159,8 @@ func checkZoneFile(fn string) {
 	if err != nil {
 		logger.Errorf("Error opening file %s: %s\n", fn, err)
 	}
+	defer rzonefile.Close()
+
 	zonefile := bufio.NewReader(rzonefile)
 
 	logger.Infow("Reading zone file", "file", fn, "zone", zn)
