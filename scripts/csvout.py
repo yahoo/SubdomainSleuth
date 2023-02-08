@@ -25,8 +25,6 @@ parser.add_argument("-f", "--field", type=str, action='append')
 
 args = parser.parse_args()
 
-print(args)
-
 # Open the output file
 output = csv.writer(sys.stdout)
 

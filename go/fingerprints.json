@@ -605,5 +605,14 @@
 			"Error 404",
 			"The requested URL was not found on this server."
 		]
+	},
+	{
+		"service": "Campaign Monitor CreateSend",
+		"cname": [
+			"cname.createsend.com"
+		],
+		"fingerprint": [
+			"Wait, what's this charge on my credit card?"
+		]
 	}
 ]

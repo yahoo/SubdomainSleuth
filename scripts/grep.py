@@ -62,5 +62,6 @@ for r in data:
 # Dump the JSON to standard out, flush sys.stdout to avoid interleving, and
 # write a summary.
 json.dump(out, options.output, indent=2)
+options.output.write("\n")
 options.output.flush()
 sys.stderr.write("Matched %d records\n" % (matched))
