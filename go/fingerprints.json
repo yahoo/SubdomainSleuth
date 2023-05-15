@@ -589,11 +589,10 @@
 		],
 		"fingerprint": [
 			"DNS resolution error",
-			"Cloudflare Ray ID",
 			"error code: 1001",
 			"Origin DNS error",
-			"error code:  1016",
-			"Cloudflare"
+			"error code: 1016",
+			"error code: 1018"
 		]
 	},
 	{
