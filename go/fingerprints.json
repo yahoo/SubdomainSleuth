@@ -629,5 +629,16 @@
 			"Domain Not Claimed",
 			"This domain has been mapped to Squarespace"
 		]
+	},
+	{
+		"service": "Wix",
+		"cname": [
+			"wixdns.net",
+			"wixdns.com",
+			"wix.com"
+		],
+		"fingerprint": [
+			"this domain isn't connected to a website yet"
+		]
 	}
 ]
