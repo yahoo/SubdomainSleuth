@@ -18,7 +18,6 @@ import re
 data = []
 out = []
 
-
 parser = argparse.ArgumentParser()
 parser.add_argument('-i', '--input', type=argparse.FileType('r'), default=sys.stdin)
 parser.add_argument('-o', '--output', type=argparse.FileType('w'), default=sys.stdout)
@@ -26,6 +25,7 @@ parser.add_argument('-n', '--name')
 parser.add_argument('-t', '--target')
 parser.add_argument('-c', '--check')
 parser.add_argument('-d', '--description')
+parser.add_argument('-v', '--invert-match', default=False, action='store_true')
 
 options = parser.parse_args()
 
@@ -55,7 +55,8 @@ data = json.load(options.input)
 matched = 0
 
 for r in data:
-    if re_name.search(r['name']) and re_target.search(r['target']) and re_check.search(r['check']):
+    matches : bool = re_name.search(r['name']) is not None and re_target.search(r['target']) is not None and re_check.search(r['check']) is not None
+    if matches != options.invert_match:
         out.append(r)
         matched += 1
 
