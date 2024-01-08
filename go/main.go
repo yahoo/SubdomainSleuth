@@ -104,14 +104,18 @@ func main() {
 		defer output_file.Close()
 	}
 
+	// Initialize the checks we're using
+	for _, checkname := range checks {
+		check, ok := checkerRegistry[checkname]
+		if !ok {
+			logger.Fatalf("Unknown check %s\n", checkname)
+		}
+		check.Init()
+	}
+
 	// Check our connectivity.  Certain checks require direct IPv4 and IPv6
 	// connectivity to remote authoritative servers.
 	connectivity = CheckConnectivity()
-
-	// Initialize the checks we're using
-	for _, check := range checks {
-		checkerRegistry[check].Init()
-	}
 
 	// Disable HTTPS cert verification for our HTTP checks.  We don't want cert
 	// issues to prvent us from spotting potential takeovers.
