@@ -23,10 +23,11 @@
     - [IP address comparisons](#ip-address-comparisons)
     - [Fingerprints](#fingerprints)
   - [Utilities](#utilities)
+  - [Other Tools](#other-tools)
 
 
 ## Background
-This tool is designed to help secure your DNS infrastructure by scanning for bad records that might be used for a subdomain takeover.  It reads DNS zone files, performs a series of validation checks to identify broken records, and generates a report.
+This tool is designed to help secure your DNS infrastructure by scanning for bad records that might be used for a subdomain takeover.  It reads DNS zone files in Bind/RFC 1035 format, performs a series of validation checks to identify broken records, and generates a report.
 
 A subdomain takeover is when an attacker is able to take control of the target of an existing DNS record.  This is normally the result of what we call a “dangling record”, which is a record that points to something that either doesn’t exist or does exist but isn’t under your control.  That could be a broken CNAME, it could be a bad NS record, or it could be a reference to a service that resolves but that you don’t manage.  If an attacker successfully takes over a name, they can serve any content they want under your domain.  That could be used for phishing or other types of attacks.
 
@@ -127,3 +128,6 @@ This will filter the results to only ones with a target containing amazonaws.com
 `cat output.json | python scripts/grep.py -c cname -t dkim.amazonses.com | python3 scripts/csvout.py -f name -f check -f target`  
 
 This will filter the results to only broken CNAMEs to AWS DKIM records and then output a CSV with the name, the check, and the target.
+
+## Other Tools
+* cli53 - Users have reported that they have successfully exported zones from AWS using cli53 and were able to scan them with Subdomain Sleuth.  See https://github.com/barnybug/cli53 and https://github.com/yahoo/SubdomainSleuth/issues/3.

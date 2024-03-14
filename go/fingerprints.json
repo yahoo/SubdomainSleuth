@@ -605,5 +605,30 @@
 			"Error 404",
 			"The requested URL was not found on this server."
 		]
+	},
+	{
+		"service": "Campaign Monitor CreateSend",
+		"cname": [
+			"cname.createsend.com"
+		],
+		"fingerprint": [
+			"Wait, what's this charge on my credit card?"
+		]
+	},
+	{
+		"service": "Squarespace",
+		"cname": [
+			"ext-cust.squarespace.com"
+		],
+		"address": [
+			"198.49.23.144/32",
+			"198.49.23.145/32",
+			"198.185.159.144/32",
+			"198.185.159.145/32"
+		],
+		"fingerprint": [
+			"Domain Not Claimed",
+			"This domain has been mapped to Squarespace"
+		]
 	}
 ]

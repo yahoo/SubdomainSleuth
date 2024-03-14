@@ -23,7 +23,7 @@ import (
 
 var client dns.Client
 
-var results Results
+var results Results = make([]Result, 0)
 
 type resolverFlag []string
 
@@ -161,6 +161,8 @@ func checkZoneFile(fn string) {
 	if err != nil {
 		logger.Errorf("Error opening file %s: %s\n", fn, err)
 	}
+	defer rzonefile.Close()
+
 	zonefile := bufio.NewReader(rzonefile)
 
 	logger.Infow("Reading zone file", "file", fn, "zone", zn)
