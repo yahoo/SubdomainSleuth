@@ -191,7 +191,7 @@ func parseResolvConf() (resolvers []string) {
 
 	logger.Infof("Trying to determine resolvers from %s.\n", fn)
 	fd, err := os.Open(fn)
-	// Quietly bail out of the file doesn't exist.
+	// Quietly bail out if the file doesn't exist.
 	if errors.Is(err, os.ErrNotExist) {
 		return
 	}
