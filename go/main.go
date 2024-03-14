@@ -16,7 +16,6 @@ import (
 	"net/http"
 	"os"
 	"path"
-	"strings"
 
 	"github.com/miekg/dns"
 	"go.uber.org/zap"
@@ -189,28 +188,16 @@ func checkRecord(rr dns.RR) {
 func parseResolvConf() (resolvers []string) {
 	fn := "/etc/resolv.conf"
 
-	logger.Infof("Trying to determine resolvers from %s.\n", fn)
-	fd, err := os.Open(fn)
-	// Quietly bail out if the file doesn't exist.
+	logger.Infof("Trying to determine resolvers from '%s'.\n", fn)
+	clientConfig, err := dns.ClientConfigFromFile(fn)
 	if errors.Is(err, os.ErrNotExist) {
+		logger.Infof("No such file.\n")
 		return
 	}
 	if err != nil {
-		logger.Errorf("Error opening file '%s': %s\n", fn, err)
+		logger.Errorf("Error parsing file '%s': %s\n", fn, err)
 		return
 	}
-	defer fd.Close()
-
-	scanner := bufio.NewScanner(fd)
-	for scanner.Scan() {
-		fields := strings.Fields(scanner.Text())
-		if len(fields) == 2 &&  fields[0] == "nameserver" {
-			resolvers = append(resolvers, fields[1])
-		}
-	}
-
-	if err := scanner.Err(); err != nil {
-		logger.Errorf("Error reading from '%s': %s\n", fn, err)
-	}
+	resolvers = clientConfig.Servers
 	return
 }
