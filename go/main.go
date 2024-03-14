@@ -9,6 +9,7 @@ import (
 	"bufio"
 	"crypto/tls"
 	"encoding/json"
+	"errors"
 	"flag"
 	"fmt"
 	"log"
@@ -75,16 +76,19 @@ func main() {
 	plogger, _ := logConfig.Build()
 	logger = plogger.Sugar()
 
+	if len(resolvers) == 0 {
+		resolvers = parseResolvConf()
+	}
+	// If we didn't get any resolvers, bail out immediately.
+	if len(resolvers) == 0 {
+		logger.Fatalf("No resolvers specified - exiting.\n")
+		os.Exit(1)
+	}
+
 	logger.Infow("In main")
 	logger.Infof("Resolvers: %v\n", resolvers)
 	logger.Infof("Files: %v\n", flag.Args())
 	logger.Infof("Checks: %v\n", checks)
-
-	// If we didn't get any resolvers, bail out immediately.
-	if len(resolvers) == 0 {
-		logger.Fatalf("No resolvers specified - exiting\n")
-		os.Exit(1)
-	}
 
 	var err error
 	var output_file *os.File
@@ -178,4 +182,22 @@ func checkRecord(rr dns.RR) {
 	for _, check := range checks {
 		checkerRegistry[check].Check(rr)
 	}
+}
+
+// Extract resolvers from /etc/resolv.conf, if any.
+func parseResolvConf() (resolvers []string) {
+	fn := "/etc/resolv.conf"
+
+	logger.Infof("Trying to determine resolvers from '%s'.\n", fn)
+	clientConfig, err := dns.ClientConfigFromFile(fn)
+	if errors.Is(err, os.ErrNotExist) {
+		logger.Infof("No such file.\n")
+		return
+	}
+	if err != nil {
+		logger.Errorf("Error parsing file '%s': %s\n", fn, err)
+		return
+	}
+	resolvers = clientConfig.Servers
+	return
 }
