@@ -55,7 +55,7 @@ data = json.load(options.input)
 matched = 0
 
 for r in data:
-    matches : bool = re_name.search(r['name']) is not None and re_target.search(r['target']) is not None and re_check.search(r['check']) is not None
+    matches : bool = re_name.search(r['name']) is not None and re_target.search(r['target']) is not None and re_check.search(r['check']) is not None and re_description.search(r['description']) is not None
     if matches != options.invert_match:
         out.append(r)
         matched += 1
