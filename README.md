@@ -40,7 +40,7 @@ A subdomain takeover is when an attacker is able to take control of the target o
 ## Usage
 This tool sometimes needs to make DNS queries directly to remote servers.  As such, you need to run it on a host that has direct Internet access to external DNS servers.  If your firewall filters outbound DNS queries, you may see failures.  Likewise, to check IPv6 resources you'll need to have IPv6 connectivity.
 
-First, you need to specify recursive resolvers that you can use to execute queries.  You specify these on the command line using the `--resolver` flag.  You can use this command one or more times.  It will cycle through them to even out the load.  This tool may execute _MANY_ queries, so use resolvers that have plenty of capacity.
+First, you need to specify recursive resolvers that you can use to execute queries.  You specify these on the command line using the `--resolver` flag, which you may specify multiple times.  If no resolver is specified, then the tool will attempt to extract resolvers from `/etc/resolv.conf` if that file exists.  `SubdomainSleuth` will cycle through all given resolvers to even out the load.  This tool may execute _MANY_ queries, so use resolvers that have plenty of capacity.
 
 Next, you need to choose which checks to execute.  These include the `cname`, `ns`, and `http-fingerprint` checks.  You specify these with the `--check` flag and the name of the check to execute.  You can specify multiple checks, and it will execute all of them.
 

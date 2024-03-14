@@ -9,12 +9,14 @@ import (
 	"bufio"
 	"crypto/tls"
 	"encoding/json"
+	"errors"
 	"flag"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
 	"path"
+	"strings"
 
 	"github.com/miekg/dns"
 	"go.uber.org/zap"
@@ -75,16 +77,19 @@ func main() {
 	plogger, _ := logConfig.Build()
 	logger = plogger.Sugar()
 
+	if len(resolvers) == 0 {
+		resolvers = parseResolvConf()
+	}
+	// If we didn't get any resolvers, bail out immediately.
+	if len(resolvers) == 0 {
+		logger.Fatalf("No resolvers specified - exiting.\n")
+		os.Exit(1)
+	}
+
 	logger.Infow("In main")
 	logger.Infof("Resolvers: %v\n", resolvers)
 	logger.Infof("Files: %v\n", flag.Args())
 	logger.Infof("Checks: %v\n", checks)
-
-	// If we didn't get any resolvers, bail out immediately.
-	if len(resolvers) == 0 {
-		logger.Fatalf("No resolvers specified - exiting\n")
-		os.Exit(1)
-	}
 
 	var err error
 	var output_file *os.File
@@ -144,11 +149,9 @@ func main() {
 
 	// Write our output as JSON to the output_file.  This may be a normal file
 	// or it could be stdout.
-	if len(results) > 0 {
-		out, _ := json.MarshalIndent(results, "", "  ")
-		output_file.Write(out)
-		output_file.Sync()
-	}
+	out, _ := json.MarshalIndent(results, "", "  ")
+	output_file.Write(out)
+	output_file.Sync()
 }
 
 // Parse a zone file and run all the records found through the check plugins.
@@ -180,4 +183,34 @@ func checkRecord(rr dns.RR) {
 	for _, check := range checks {
 		checkerRegistry[check].Check(rr)
 	}
+}
+
+// Extract resolvers from /etc/resolv.conf, if any.
+func parseResolvConf() (resolvers []string) {
+	fn := "/etc/resolv.conf"
+
+	logger.Infof("Trying to determine resolvers from %s.\n", fn)
+	fd, err := os.Open(fn)
+	// Quietly bail out of the file doesn't exist.
+	if errors.Is(err, os.ErrNotExist) {
+		return
+	}
+	if err != nil {
+		logger.Errorf("Error opening file '%s': %s\n", fn, err)
+		return
+	}
+	defer fd.Close()
+
+	scanner := bufio.NewScanner(fd)
+	for scanner.Scan() {
+		fields := strings.Fields(scanner.Text())
+		if len(fields) == 2 &&  fields[0] == "nameserver" {
+			resolvers = append(resolvers, fields[1])
+		}
+	}
+
+	if err := scanner.Err(); err != nil {
+		logger.Errorf("Error reading from '%s': %s\n", fn, err)
+	}
+	return
 }
