@@ -23,6 +23,7 @@ import (
 )
 
 var client dns.Client
+var tcpclient dns.Client
 
 var results Results = make([]Result, 0)
 
@@ -107,6 +108,9 @@ func main() {
 		}
 		defer output_file.Close()
 	}
+
+	// Set the TCP client to use TCP for all queries.
+	tcpclient.Net = "tcp"
 
 	// Check our connectivity.  Certain checks require direct IPv4 and IPv6
 	// connectivity to remote authoritative servers.

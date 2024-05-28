@@ -19,7 +19,16 @@ func RecursiveQuery(name string, t uint16) (r *dns.Msg, err error) {
 	m.RecursionDesired = true
 	resolver_idx++
 	resolver := resolvers[resolver_idx%len(resolvers)]
+
 	r, _, err = client.Exchange(m, net.JoinHostPort(resolver, "53"))
+
+	// If the UDP query came back truncated, retry with TCP.
+	if r.Truncated {
+		logger.Debugw("UDP response truncated, retrying with TCP", "name", name, "type", t, "resolver", resolver)
+		// Increase the buffer size to 4096 bytes.
+		m.SetEdns0(4096, true)
+		r, _, err = tcpclient.Exchange(m, net.JoinHostPort(resolver, "53"))
+	}
 
 	// fmt.Printf("Query: %v\n", m)
 	// fmt.Printf("CNAME error: %v\n", err)
