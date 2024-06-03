@@ -209,7 +209,18 @@ func (self *HttpChecker) LoadFingerprints() (err error) {
 // GetHttp performs an HTTP/HTTPS request to a URL and returns the content and
 // any error.
 func GetHttp(url string) (content []byte, err error) {
-	resp, err := http.Get(url)
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		logger.Infof("New Request error on %s: %s\n", url, err)
+	}
+
+	// Add Accept header for greater compatibility with some servers
+	req.Header = http.Header{
+		"Accept": {"*/*"},
+	}
+
+	client := http.Client{}
+	resp, err := client.Do(req)
 	if err != nil {
 		logger.Infof("HTTP GET error on %s: %s\n", url, err)
 		return
