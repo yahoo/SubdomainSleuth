@@ -21,6 +21,11 @@ func RecursiveQuery(name string, t uint16) (r *dns.Msg, err error) {
 	resolver := resolvers[resolver_idx%len(resolvers)]
 
 	r, _, err = client.Exchange(m, net.JoinHostPort(resolver, "53"))
+	if err != nil {
+		logger.Debugw("Error sending recursive query for '%s' to '%s:53': %s\n",
+				name, resolver, err)
+		return nil, err
+	}
 
 	// If the UDP query came back truncated, retry with TCP.
 	if r.Truncated {
@@ -28,6 +33,11 @@ func RecursiveQuery(name string, t uint16) (r *dns.Msg, err error) {
 		// Increase the buffer size to 4096 bytes.
 		m.SetEdns0(4096, true)
 		r, _, err = tcpclient.Exchange(m, net.JoinHostPort(resolver, "53"))
+		if err != nil {
+			logger.Debugw("Error sending recursive query for '%s' to '%s': %s\n",
+				name, resolver, err)
+			return nil, err
+		}
 	}
 
 	// fmt.Printf("Query: %v\n", m)
