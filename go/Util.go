@@ -22,7 +22,7 @@ func RecursiveQuery(name string, t uint16) (r *dns.Msg, err error) {
 
 	r, _, err = client.Exchange(m, net.JoinHostPort(resolver, "53"))
 	if err != nil {
-		logger.Debugw("Error sending recusrive query for '%s' to '%s:53': %s\n",
+		logger.Debugw("Error sending recursive query for '%s' to '%s:53': %s\n",
 				name, resolver, err)
 		return nil, err
 	}
@@ -34,7 +34,7 @@ func RecursiveQuery(name string, t uint16) (r *dns.Msg, err error) {
 		m.SetEdns0(4096, true)
 		r, _, err = tcpclient.Exchange(m, net.JoinHostPort(resolver, "53"))
 		if err != nil {
-			logger.Debugw("Error sending recusrive query for '%s' to '%s': %s\n",
+			logger.Debugw("Error sending recursive query for '%s' to '%s': %s\n",
 				name, resolver, err)
 			return nil, err
 		}
